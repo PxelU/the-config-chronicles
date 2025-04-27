@@ -21,7 +21,7 @@ install_packages() {
     info "Installing required packages..."
     if command -v apt &>/dev/null; then
         sudo apt update
-        sudo apt install -y zsh git fontconfig curl wget unzip
+        sudo apt install -y zsh git fontconfig vim curl wget unzip
         elif command -v pacman &>/dev/null; then
         sudo pacman -Sy --noconfirm zsh git curl wget unzip
     elif command -v dnf &>/dev/null; then
