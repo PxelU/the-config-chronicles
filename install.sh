@@ -9,7 +9,8 @@ OH_MY_ZSH_DIR="$HOME/.oh-my-zsh"
 ZSH_CUSTOM="$OH_MY_ZSH_DIR/custom"
 MESLO_FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/Meslo.zip"
 MESLO_FONT_DIR="$HOME/.local/share/fonts"
-REQUIREMENTS=(
+# System packages to install via apt
+APT_PACKAGES=(
     git
     curl
     wget
@@ -17,9 +18,12 @@ REQUIREMENTS=(
     zsh
     locales
     sudo
-    fontconfig
-    vim 
 )
+
+# Commands to check for (should match APT_PACKAGES, but can be extended)
+REQUIRED_COMMANDS=(
+)
+
 
 
 
@@ -31,7 +35,7 @@ error()   { echo -e "\033[1;31m[ERROR]\033[0m $*"; exit 1; }
 # === 0. Check Requirements ===
 check_requirements() {
     local missing=()
-    for cmd in "${REQUIREMENTS[@]}"; do
+    for cmd in "${REQUIRED_COMMANDS[@]}"; do
         if ! command -v "$cmd" >/dev/null 2>&1; then
             missing+=("$cmd")
         fi
@@ -45,9 +49,9 @@ check_requirements() {
 
 # === 1. Package Installation ===
 install_packages() {
-    info "Installing required packages: ${REQUIREMENTS[*]}"
+    info "Installing required system packages: ${APT_PACKAGES[*]}"
     sudo apt-get update
-    sudo apt-get install -y "${REQUIREMENTS[@]}"
+    sudo apt-get install -y "${APT_PACKAGES[@]}"
 }
 
 # === 2. Font Installation ===
