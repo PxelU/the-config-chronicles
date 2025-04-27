@@ -4,7 +4,6 @@ set -euo pipefail
 # === Config ===
 REPO_ROOT="$HOME/the-config-chronicles"         # Adjust if your repo is elsewhere
 DOTFILES_DIR="$REPO_ROOT/dotfiles"
-ZSH_DOTFILES=(.zshrc .p10k.zsh .aliases)
 OH_MY_ZSH_DIR="$HOME/.oh-my-zsh"
 ZSH_CUSTOM="$OH_MY_ZSH_DIR/custom"
 MESLO_FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/Meslo.zip"
@@ -64,6 +63,13 @@ install_packages() {
 
 # === 2. Font Installation ===
 install_fonts() {
+
+    # Check if at least one Meslo font file is already installed
++    if ls "$MESLO_FONT_DIR"/MesloLGS*.ttf 1> /dev/null 2>&1; then
++        info "Meslo Nerd Fonts already installed, skipping download."
++        return
++    fi
+
     info "Installing Meslo Nerd Fonts..."
     mkdir -p "$MESLO_FONT_DIR"
     TMP_DIR=$(mktemp -d)
