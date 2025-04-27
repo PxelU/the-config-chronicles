@@ -9,7 +9,7 @@ OH_MY_ZSH_DIR="$HOME/.oh-my-zsh"
 ZSH_CUSTOM="$OH_MY_ZSH_DIR/custom"
 MESLO_FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/Meslo.zip"
 MESLO_FONT_DIR="$HOME/.local/share/fonts"
-MESLO_FONT_FILES=("MesloLGS NF Regular.ttf" "MesloLGS NF Bold.ttf" "MesloLGS NF Italic.ttf" "MesloLGS NF Bold Italic.ttf")
+
 
 # === Utility Functions ===
 info()    { echo -e "\033[1;34m[INFO]\033[0m $*"; }
@@ -33,16 +33,15 @@ install_packages() {
 
 # === 2. Font Installation ===
 install_fonts() {
-    info "Installing Meslo Nerd Font..."
+    info "Installing Meslo Nerd Fonts..."
     mkdir -p "$MESLO_FONT_DIR"
-    tmpdir=$(mktemp -d)
-    wget -qO "$tmpdir/meslo.zip" "$MESLO_FONT_URL"
-    unzip -o "$tmpdir/meslo.zip" -d "$tmpdir"
-    for font in "${MESLO_FONT_FILES[@]}"; do
-        cp "$tmpdir/$font" "$MESLO_FONT_DIR/"
-    done
+    TMP_DIR=$(mktemp -d)
+    FONT_ZIP="$TMP_DIR/Meslo.zip"
+    wget -q -O "$FONT_ZIP" "$MESLO_FONT_URL"
+    unzip -o "$FONT_ZIP" -d "$MESLO_FONT_DIR"
     fc-cache -fv
-    rm -rf "$tmpdir"
+    rm -rf "$TMP_DIR"
+    info "Meslo Nerd Fonts installed."
 }
 
 # === 3. Oh My Zsh Setup ===
