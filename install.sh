@@ -18,6 +18,8 @@ APT_PACKAGES=(
     zsh
     locales
     sudo
+    fontconfig
+    vim
 )
 
 # Commands to check for (should match APT_PACKAGES, but can be extended)
