@@ -114,16 +114,16 @@ install_zoxide() {
 
 # === 7. Symlink Dotfiles ===
 symlink_dotfiles() {
-    info "Symlinking Zsh dotfiles..."
-    for file in "${ZSH_DOTFILES[@]}"; do
-        src="$DOTFILES_DIR/zsh/$file"
-        dest="$HOME/$file"
-        if [ -e "$src" ]; then
-            ln -sf "$src" "$dest"
-            info "Symlinked $file"
-        else
-            warn "File $src not found, skipping."
+    info "Symlinking dotfiles..."
+    for file in "$ZSH_DOTFILES_DIR"/.[^.]*; do
+        target="$HOME/$(basename "$file")"
+        if [ -e "$target" ] && [ ! -L "$target" ]; then
+            backup="$target.backup.$(date +%s)"
+            warn "Backing up existing $target to $backup"
+            mv "$target" "$backup"
         fi
+        ln -sf "$file" "$target"
+        info "Symlinked $(basename "$file")"
     done
 }
 
