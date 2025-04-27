@@ -106,13 +106,6 @@ symlink_dotfiles() {
     done
 }
 
-# === 8. Change Default Shell to Zsh ===
-set_default_shell() {
-    if [ "$SHELL" != "$(command -v zsh)" ]; then
-        info "Changing default shell to Zsh..."
-        chsh -s "$(command -v zsh)"
-    fi
-}
 
 # === Main ===
 main() {
@@ -123,7 +116,6 @@ main() {
     install_powerlevel10k
     install_zoxide
     symlink_dotfiles
-    set_default_shell
 
     info "Setup complete! Please restart your terminal or run 'exec zsh'."
 }
