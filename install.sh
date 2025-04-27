@@ -26,6 +26,12 @@ APT_PACKAGES=(
 REQUIRED_COMMANDS=(
 )
 
+declare -A APP_DOTFILES_DIRS=(
+    [zsh]="$DOTFILES_DIR/dotfiles/zsh"
+    # Add more as you grow:
+    # [vim]="$DOTFILES_DIR/dotfiles/vim"
+    # [git]="$DOTFILES_DIR/dotfiles/git"
+)
 
 
 
@@ -113,18 +119,24 @@ install_zoxide() {
 }
 
 # === 7. Symlink Dotfiles ===
-
 symlink_dotfiles() {
     info "Symlinking dotfiles..."
-    for file in "$ZSH_DOTFILES_DIR"/.[^.]*; do
-        target="$HOME/$(basename "$file")"
-        if [ -e "$target" ] && [ ! -L "$target" ]; then
-            backup="${target}.backup.$(date +%s)"
-            warn "Backing up existing $target to $backup"
-            mv "$target" "$backup"
+    for app in "${!APP_DOTFILES_DIRS[@]}"; do
+        dotdir="${APP_DOTFILES_DIRS[$app]}"
+        if [ -d "$dotdir" ]; then
+            for file in "$dotdir"/.[^.]*; do
+                target="$HOME/$(basename "$file")"
+                if [ -e "$target" ] && [ ! -L "$target" ]; then
+                    backup="${target}.backup.$(date +%s)"
+                    warn "Backing up existing $target to $backup"
+                    mv "$target" "$backup"
+                fi
+                ln -sf "$file" "$target"
+                info "Symlinked $(basename "$file")"
+            done
+        else
+            warn "Dotfiles directory for $app not found: $dotdir"
         fi
-        ln -sf "$file" "$target"
-        info "Symlinked $(basename "$file")"
     done
 }
 
