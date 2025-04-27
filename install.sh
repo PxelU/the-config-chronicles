@@ -27,7 +27,7 @@ REQUIRED_COMMANDS=(
 )
 
 declare -A APP_DOTFILES_DIRS=(
-    [zsh]="$DOTFILES_DIR/dotfiles/zsh"
+    [zsh]="$DOTFILES_DIR/zsh"
     # Add more as you grow:
     # [vim]="$DOTFILES_DIR/dotfiles/vim"
     # [git]="$DOTFILES_DIR/dotfiles/git"
