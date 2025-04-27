@@ -1,0 +1,45 @@
+# === Sensitive directories and files ===
+.ssh/
+.gnupg/
+.aws/
+.gcloud/
+.secrets/
+*.key
+*.pem
+*.crt
+*.p12
+*.gpg
+*.asc
+*.kdbx
+*.env
+*.secrets
+*.pfx
+
+# === Editor and system junk ===
+*.swp
+*.swo
+*~
+*.bak
+*.tmp
+.DS_Store
+Thumbs.db
+
+# === Cache and local state ===
+.cache/
+.local/
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# === IDE/project files ===
+.idea/
+.vscode/
+
+# === Stow-specific ignores ===
+.stow-local-ignore
+stow-local-ignore
+
+# === Misc ===
+*.old
+*.backup
+
