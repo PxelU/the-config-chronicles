@@ -63,12 +63,11 @@ install_packages() {
 
 # === 2. Font Installation ===
 install_fonts() {
-
     # Check if at least one Meslo font file is already installed
-+    if ls "$MESLO_FONT_DIR"/MesloLGS*.ttf 1> /dev/null 2>&1; then
-+        info "Meslo Nerd Fonts already installed, skipping download."
-+        return
-+    fi
+    if ls "$MESLO_FONT_DIR"/MesloLGS*.ttf 1> /dev/null 2>&1; then
+        info "Meslo Nerd Fonts already installed, skipping download."
+        return
+    fi
 
     info "Installing Meslo Nerd Fonts..."
     mkdir -p "$MESLO_FONT_DIR"
