@@ -9,6 +9,18 @@ OH_MY_ZSH_DIR="$HOME/.oh-my-zsh"
 ZSH_CUSTOM="$OH_MY_ZSH_DIR/custom"
 MESLO_FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/Meslo.zip"
 MESLO_FONT_DIR="$HOME/.local/share/fonts"
+REQUIREMENTS=(
+    git
+    curl
+    wget
+    unzip
+    zsh
+    locales
+    sudo
+    fontconfig
+    vim 
+)
+
 
 
 # === Utility Functions ===
@@ -16,19 +28,26 @@ info()    { echo -e "\033[1;34m[INFO]\033[0m $*"; }
 warn()    { echo -e "\033[1;33m[WARN]\033[0m $*"; }
 error()   { echo -e "\033[1;31m[ERROR]\033[0m $*"; exit 1; }
 
+# === 0. Check Requirements ===
+check_requirements() {
+    local missing=()
+    for cmd in "${REQUIREMENTS[@]}"; do
+        if ! command -v "$cmd" >/dev/null 2>&1; then
+            missing+=("$cmd")
+        fi
+    done
+    if [ "${#missing[@]}" -ne 0 ]; then
+        echo "Error: Missing required commands: ${missing[*]}" >&2
+        echo "Please install them and try again." >&2
+        exit 1
+    fi
+}
+
 # === 1. Package Installation ===
 install_packages() {
-    info "Installing required packages..."
-    if command -v apt &>/dev/null; then
-        sudo apt update
-        sudo apt install -y zsh git fontconfig vim curl wget unzip
-        elif command -v pacman &>/dev/null; then
-        sudo pacman -Sy --noconfirm zsh git curl wget unzip
-    elif command -v dnf &>/dev/null; then
-        sudo dnf install -y zsh git curl wget unzip
-    else
-        warn "Package manager not detected. Install zsh, git, curl, wget, and unzip manually."
-    fi
+    info "Installing required packages: ${REQUIREMENTS[*]}"
+    sudo apt-get update
+    sudo apt-get install -y "${REQUIREMENTS[@]}"
 }
 
 # === 2. Font Installation ===
@@ -109,6 +128,7 @@ symlink_dotfiles() {
 
 # === Main ===
 main() {
+    check_requirements
     install_packages
     install_fonts
     install_oh_my_zsh
