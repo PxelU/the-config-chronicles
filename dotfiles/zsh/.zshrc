@@ -118,8 +118,11 @@ source $ZSH/oh-my-zsh.sh
 # export _ZO_MAXAGE=10000
 export _ZO_RESOLVE_SYMLINKS=1
 
-
 eval "$(zoxide init zsh)"
 [ -f ~/.aliases ] && source ~/.aliases
 zstyle -d ':completion:*:*:*:*:*' menu
 zstyle ':completion:*' menu no
+
+# Modular sourcing
+[ -f ~/fzf.zsh ] && source ~/fzf.zsh
+[ -f ~/zoxide.zsh ] && source ~/zoxide.zsh

@@ -156,6 +156,12 @@ main() {
     install_powerlevel10k
     install_zoxide
     symlink_dotfiles
+	# Run all setup scripts in order
+	for script in setup/*.sh; do
+	  echo "Running $script"
+	  sh "$script"
+	done
+
 
     info "Setup complete! Please restart your terminal or run 'exec zsh'."
 }
