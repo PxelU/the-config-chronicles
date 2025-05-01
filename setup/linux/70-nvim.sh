@@ -43,9 +43,3 @@ log "Cleaning up..."
 rm -f /tmp/nvim.tar.gz
 
 log "Neovim $NVIM_VERSION installed: $("$BIN_LINK" --version | head -n1)"
-
-if ! grep -q 'export PATH="$HOME/.local/bin:$PATH"' ~/.zshrc; then
-    echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
-    log "Added ~/.local/bin to PATH in ~/.zshrc"
-fi
-
