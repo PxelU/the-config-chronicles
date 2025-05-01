@@ -8,4 +8,4 @@ require 'config.options'
 require 'config.keymaps'
 
 -- Autocommands
--- require 'config.autocommands
+require 'config.autocommands'
