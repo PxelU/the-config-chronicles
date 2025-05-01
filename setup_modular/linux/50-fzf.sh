@@ -10,7 +10,7 @@ if [ ! -d "$HOME/.fzf" ]; then
     log "Cloning fzf..."
     git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"
     log "Installing fzf..."
-    yes | "$HOME/.fzf/install" --all --no-update-rc
+    "$HOME/.fzf/install" --all --no-update-rc
 else
     log "fzf already installed."
 fi
