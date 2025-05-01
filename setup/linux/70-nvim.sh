@@ -15,7 +15,7 @@ BIN_LINK="$HOME/.local/bin/nvim"
 # Check existing installation
 if [[ -x "$BIN_LINK" ]]; then
     INSTALLED_VERSION=$("$BIN_LINK" --version | head -n1 | awk '{print $2}')
-    if [[ "$INSTALLED_VERSION" == "${NVIM_VERSION#v}" ]]; then
+    if [[ "$INSTALLED_VERSION" == "${NVIM_VERSION}" ]]; then
         log "Neovim version $NVIM_VERSION already installed."
         exit 0
     else
