@@ -45,5 +45,21 @@ for file in "$ZSH_CONFIG_SRC"/*.zsh; do
     log "Symlinked $(basename "$file") to $tgt"
 done
 
+# Symlink Neovim config to ~/.config/nvim
+NVIM_SRC="$PWD/dotfiles/nvim/.config/nvim"
+NVIM_TGT="$HOME/.config/nvim"
+
+if [ -e "$NVIM_TGT" ] && [ ! -L "$NVIM_TGT" ]; then
+    backup="${NVIM_TGT}.backup.$(date +%s)"
+    warn "Backing up existing $NVIM_TGT to $backup"
+    mv "$NVIM_TGT" "$backup"
+fi
+
+ln -sfn "$NVIM_SRC" "$NVIM_TGT"
+log "Symlinked Neovim config to $NVIM_TGT"
+
+
+
 log "Dotfile symlinking complete."
+
 
