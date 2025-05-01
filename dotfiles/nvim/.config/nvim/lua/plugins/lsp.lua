@@ -20,6 +20,7 @@ return {
       },
       automatic_installation = true,
     }
+    require('lspconfig').bashls.setup(require('plugins.lsp.bashls'))
     require('lspconfig').lua_ls.setup {
       on_init = function(client)
         local path = client.workspace_folders[1].name
