@@ -13,6 +13,8 @@ APT_PACKAGES=(
     wget
     unzip
     zsh
+    make
+    gzip
     locales
     sudo
     fontconfig
