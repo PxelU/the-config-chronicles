@@ -21,6 +21,7 @@
 *~
 *.bak
 *.tmp
+lazy-lock.json
 .DS_Store
 Thumbs.db
 

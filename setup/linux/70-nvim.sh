@@ -9,13 +9,12 @@ log() {
 
 # Specify Neovim version
 NVIM_VERSION="v0.11.1"
-ARCH="linux64"
-INSTALL_DIR="$HOME/.local/share/nvim-${ARCH}"
+INSTALL_DIR="$HOME/.local/share/nvim-$NVIM_VERSION"
 BIN_LINK="$HOME/.local/bin/nvim"
 
 # Check existing installation
-if command -v nvim &>/dev/null; then
-    INSTALLED_VERSION=$(nvim --version | head -n1 | awk '{print $2}')
+if [[ -x "$BIN_LINK" ]]; then
+    INSTALLED_VERSION=$("$BIN_LINK" --version | head -n1 | awk '{print $2}')
     if [[ "$INSTALLED_VERSION" == "${NVIM_VERSION#v}" ]]; then
         log "Neovim version $NVIM_VERSION already installed."
         exit 0
@@ -30,17 +29,23 @@ fi
 
 # Download and install
 log "Downloading Neovim $NVIM_VERSION..."
-curl -L "https://github.com/neovim/neovim/releases/download/${NVIM_VERSION}/nvim-${ARCH}.tar.gz" -o /tmp/nvim.tar.gz
+curl -L "https://github.com/neovim/neovim/releases/download/$NVIM_VERSION/nvim-linux-x86_64.tar.gz" -o /tmp/nvim.tar.gz
 
 log "Extracting Neovim..."
 mkdir -p "$INSTALL_DIR"
 tar xzf /tmp/nvim.tar.gz -C "$INSTALL_DIR" --strip-components=1
 
 log "Creating symlink..."
-mkdir -p ~/.local/bin
+mkdir -p "$(dirname "$BIN_LINK")"
 ln -sf "${INSTALL_DIR}/bin/nvim" "$BIN_LINK"
 
 log "Cleaning up..."
 rm -f /tmp/nvim.tar.gz
 
-log "Neovim $NVIM_VERSION installed: $(nvim --version | head -n1)"
+log "Neovim $NVIM_VERSION installed: $("$BIN_LINK" --version | head -n1)"
+
+if ! grep -q 'export PATH="$HOME/.local/bin:$PATH"' ~/.zshrc; then
+    echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
+    log "Added ~/.local/bin to PATH in ~/.zshrc"
+fi
+

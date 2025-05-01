@@ -128,3 +128,4 @@ CONFIG_CHRONICLES_DIR="$HOME/the-config-chronicles/dotfiles"
 for file in ~/.config/zsh/*.zsh; do
   [ -r "$file" ] && source "$file"
 done
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
