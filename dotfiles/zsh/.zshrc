@@ -122,6 +122,11 @@ eval "$(zoxide init zsh)"
 [ -f ~/.aliases ] && source ~/.aliases
 zstyle -d ':completion:*:*:*:*:*' menu
 zstyle ':completion:*' menu no
+# Adjust this path if your repo lives elsewhere
+CONFIG_CHRONICLES_DIR="$HOME/the-config-chronicles/dotfiles"
+for config_file in "$CONFIG_CHRONICLES_DIR/zsh/"*.zsh; do
+  [ -r "$config_file" ] && source "$config_file"
+done
 
 # Modular sourcing
 [ -f ~/fzf.zsh ] && source ~/fzf.zsh
