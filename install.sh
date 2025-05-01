@@ -154,7 +154,7 @@ main() {
     install_oh_my_zsh
     install_zsh_plugins
     install_powerlevel10k
-    install_zoxide
+#    install_zoxide
     symlink_dotfiles
 	# Run all setup scripts in order
 	for script in setup/*.sh; do
