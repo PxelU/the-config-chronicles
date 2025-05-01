@@ -27,7 +27,7 @@ main() {
     log "Detected OS: $OS_TYPE"
     export OS_TYPE
 
-    SETUP_DIR="setup_modular/$OS_TYPE"
+    SETUP_DIR="setup/$OS_TYPE"
     if [[ ! -d "$SETUP_DIR" ]]; then
         error "No setup scripts found for OS: $OS_TYPE"
         exit 1
