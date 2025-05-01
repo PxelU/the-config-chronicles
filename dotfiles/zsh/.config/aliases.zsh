@@ -4,7 +4,3 @@ alias v='vim'
 
 alias zlist='zoxide query'
 alias zadd='zoxide add'
-
-# Needed on Ubuntu
-alias fd='fdfind'
-alias bat='batcat'

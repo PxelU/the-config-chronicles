@@ -124,10 +124,7 @@ zstyle -d ':completion:*:*:*:*:*' menu
 zstyle ':completion:*' menu no
 # Adjust this path if your repo lives elsewhere
 CONFIG_CHRONICLES_DIR="$HOME/the-config-chronicles/dotfiles"
-for config_file in "$CONFIG_CHRONICLES_DIR/zsh/"*.zsh; do
-  [ -r "$config_file" ] && source "$config_file"
+# Source all extra Zsh configs from ~/.config/zsh/
+for file in ~/.config/zsh/*.zsh; do
+  [ -r "$file" ] && source "$file"
 done
-
-# Modular sourcing
-[ -f ~/fzf.zsh ] && source ~/fzf.zsh
-[ -f ~/zoxide.zsh ] && source ~/zoxide.zsh
