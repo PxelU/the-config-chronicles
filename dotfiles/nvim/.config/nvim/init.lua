@@ -1,11 +1,11 @@
 --- Load Lazy
-require 'config.lazy'
+require("config.lazy")
 
 -- NVIM Options
-require 'config.options'
+require("config.options")
 
 -- NVIM Keymaps
-require 'config.keymaps'
+require("config.keymaps")
 
 -- Autocommands
-require 'config.autocommands'
+require("config.autocommands")
