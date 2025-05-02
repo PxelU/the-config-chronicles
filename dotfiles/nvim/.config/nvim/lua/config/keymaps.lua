@@ -1,3 +1,4 @@
+local functions = require("config.functions")
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 --  See `:help 'clipboard'`
@@ -5,6 +6,8 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+
+vim.keymap.set("n", "<leader>fb", functions.format_all_buffers, { desc = "Format all buffers with available formatter" })
 
 -- TIP: Disable arrow keys in normal mod
 vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
