@@ -10,7 +10,7 @@ local config = wezterm.config_builder()
 
 -- Change your font and size here:
 config.font = wezterm.font("MesloLGS Nerd Font")  -- Pick any installed font
-config.font_size = 18.0                           -- Adjust for your eyes
+config.font_size = 16.0                           -- Adjust for your eyes
 config.line_height = 1.2                          -- Space between lines
 
 -- ###########################

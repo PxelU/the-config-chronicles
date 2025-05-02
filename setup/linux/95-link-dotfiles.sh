@@ -9,7 +9,7 @@ warn() { echo -e "${YELLOW}[$(date '+%Y-%m-%d %H:%M:%S')] $*${NC}"; }
 
 # Main dotfiles to $HOME
 declare -A SYMLINKS=(
-    ["$PWD/dotfiles/wezterm/wezterm.lua"]="$HOME/.wezterm.lua"
+    ["$PWD/dotfiles/wezterm/wezterm.lua"]="$HOME/.config/wezterm/wezterm.lua"
     ["$PWD/dotfiles/zsh/zshrc"]="$HOME/.zshrc"
     ["$PWD/dotfiles/zsh/p10k.zsh"]="$HOME/.p10k.zsh"
 )
