@@ -12,12 +12,14 @@ declare -A SYMLINKS=(
     ["$PWD/dotfiles/wezterm/wezterm.lua"]="$HOME/.config/wezterm/wezterm.lua"
     ["$PWD/dotfiles/zsh/zshrc"]="$HOME/.zshrc"
     ["$PWD/dotfiles/zsh/p10k.zsh"]="$HOME/.p10k.zsh"
+    ["$PWD/dotfiles/stylua/stylua.toml"]="$HOME/.config/stylua/stylua.toml"
 )
 
 log "Symlinking main dotfiles..."
 
 for src in "${!SYMLINKS[@]}"; do
     tgt="${SYMLINKS[$src]}"
+    mkdir -p "$(dirname "$tgt")"
     if [ -e "$tgt" ] && [ ! -L "$tgt" ]; then
         backup="${tgt}.backup.$(date +%s)"
         warn "Backing up existing $tgt to $backup"
