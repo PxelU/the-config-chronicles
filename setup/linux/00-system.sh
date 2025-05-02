@@ -14,6 +14,8 @@ APT_PACKAGES=(
     unzip
     zsh
     make
+    gcc
+    npm
     gzip
     locales
     sudo
