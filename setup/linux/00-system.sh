@@ -12,6 +12,7 @@ APT_PACKAGES=(
     curl
     wget
     unzip
+    python3-venv
     zsh
     make
     gcc
