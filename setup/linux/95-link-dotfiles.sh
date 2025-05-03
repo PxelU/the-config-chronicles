@@ -7,8 +7,19 @@ NC='\033[0m'
 log() { echo -e "${GREEN}[$(date '+%Y-%m-%d %H:%M:%S')] $*${NC}"; }
 warn() { echo -e "${YELLOW}[$(date '+%Y-%m-%d %H:%M:%S')] $*${NC}"; }
 
+ensure_dir() {
+    local target="$1"
+    local dir
+    dir="$(dirname "$target")"
+    if [ ! -d "$dir" ]; then
+        log "Creating directory $dir"
+        mkdir -p "$dir"
+    fi
+}
+
 # Main dotfiles to $HOME
 declare -A SYMLINKS=(
+    ["$PWD/dotfiles/nvim/"]="$HOME/.config/nvim"
     ["$PWD/dotfiles/wezterm/wezterm.lua"]="$HOME/.config/wezterm/wezterm.lua"
     ["$PWD/dotfiles/zsh/zshrc"]="$HOME/.zshrc"
     ["$PWD/dotfiles/zsh/p10k.zsh"]="$HOME/.p10k.zsh"
@@ -19,7 +30,7 @@ log "Symlinking main dotfiles..."
 
 for src in "${!SYMLINKS[@]}"; do
     tgt="${SYMLINKS[$src]}"
-    mkdir -p "$(dirname "$tgt")"
+    ensure_dir "$tgt"
     if [ -e "$tgt" ] && [ ! -L "$tgt" ]; then
         backup="${tgt}.backup.$(date +%s)"
         warn "Backing up existing $tgt to $backup"
@@ -47,21 +58,4 @@ for file in "$ZSH_CONFIG_SRC"/*.zsh; do
     log "Symlinked $(basename "$file") to $tgt"
 done
 
-# Symlink Neovim config to ~/.config/nvim
-NVIM_SRC="$PWD/dotfiles/nvim/.config/nvim"
-NVIM_TGT="$HOME/.config/nvim"
-
-if [ -e "$NVIM_TGT" ] && [ ! -L "$NVIM_TGT" ]; then
-    backup="${NVIM_TGT}.backup.$(date +%s)"
-    warn "Backing up existing $NVIM_TGT to $backup"
-    mv "$NVIM_TGT" "$backup"
-fi
-
-ln -sfn "$NVIM_SRC" "$NVIM_TGT"
-log "Symlinked Neovim config to $NVIM_TGT"
-
-
-
 log "Dotfile symlinking complete."
-
-
