@@ -1,11 +1,13 @@
---- Load Lazy
-require("config.lazy")
+-- init.lua: Entry point for Neovim configuration
 
--- NVIM Options
-require("config.options")
+-- Load plugin manager and plugins
+require("config.lazy")       -- Setup lazy.nvim plugin manager and plugins
+require("plugins")           -- Load all plugin configurations
 
--- NVIM Keymaps
-require("config.keymaps")
+-- Load basic Neovim settings and customizations
+require("config.options")        -- General options
+require("config.keymaps")        -- Key mappings
+require("config.autocommands")  -- Autocommands
 
--- Autocommands
-require("config.autocommands")
+-- Notify that config loaded successfully
+vim.notify("Neovim config loaded successfully!", vim.log.levels.INFO)

@@ -1,17 +1,16 @@
-return { -- Useful plugin to show you pending keybinds.
+return {
   "folke/which-key.nvim",
-  event = "VimEnter", -- Sets the loading event to 'VimEnter'
-  config = function() -- This is the function that runs, AFTER loading
-    require("which-key").setup({
+  event = "VimEnter",
+  config = function()
+    local wk = require("which-key")
+
+    wk.setup({
       icons = {
-        -- set icon mappings to true if you have a Nerd Font
         mappings = vim.g.have_nerd_font,
-        -- If you are using a Nerd Font: set icons.keys to an empty table which will use the
-        -- default whick-key.nvim defined Nerd Font icons, otherwise define a string table
         keys = vim.g.have_nerd_font and {} or {
           Up = "<Up> ",
           Down = "<Down> ",
-          Left = "<Left> ",
+
           Right = "<Right> ",
           C = "<C-…> ",
           M = "<M-…> ",
@@ -40,14 +39,18 @@ return { -- Useful plugin to show you pending keybinds.
         },
       },
     })
-    require("which-key").add({
-      { "<leader>c", group = "[C]ode", mode = { "n", "x" } },
+
+    -- Use wk.add() with a list of mappings/groups
+    wk.add({
+      { "<leader>c", group = "[C]ode", mode ={ "n", "x" },
       { "<leader>d", group = "[D]ocument" },
+      { "<leader>f", group = "[F]ormat" },
       { "<leader>r", group = "[R]ename" },
       { "<leader>s", group = "[S]earch" },
       { "<leader>w", group = "[W]orkspace" },
       { "<leader>t", group = "[T]oggle" },
-      { "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
-    })
+      { "<leader>h", group = "Git [H]unk", mode ={ "n", "v" }},
+			}})
   end,
 }
+
