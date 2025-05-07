@@ -108,6 +108,12 @@ config.keys = {
   {key="k", mods="ALT", action=act.ActivatePaneDirection("Up")},
   {key="l", mods="ALT", action=act.ActivatePaneDirection("Right")},
 
+  -- Vim-style pane creation
+  {key="d", mods="ALT", action=act.SplitHorizontal{domain="CurrentPaneDomain"}},
+  {key="s", mods="ALT", action=act.SplitVertical{domain="CurrentPaneDomain"}},
+  {key="q", mods="ALT", action=act.CloseCurrentPane{confirm=true}},
+  {key="z", mods="ALT", action=act.TogglePaneZoomState},
+
   -- Chrome-style tab management
   {key="t", mods="CTRL|SHIFT", action=act.SpawnTab("CurrentPaneDomain")},
   {key="w", mods="CTRL|SHIFT", action=act.CloseCurrentTab{confirm=true}},
@@ -116,7 +122,13 @@ config.keys = {
 }
 
 -- ###########################
--- ## 8. EXPORT CONFIG     ##
+-- ## 8. EXPORT Misc        ##
+-- ###########################
+
+config.audible_bell = "Disabled"
+
+-- ###########################
+-- ## 9. EXPORT CONFIG      ##
 -- ###########################
 
 return config
