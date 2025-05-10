@@ -19,6 +19,7 @@ APT_PACKAGES=(
     npm
     gzip
     locales
+    ansible
     sudo
     fontconfig
     vim

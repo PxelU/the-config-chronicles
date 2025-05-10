@@ -8,6 +8,7 @@ require("plugins")           -- Load all plugin configurations
 require("config.options")        -- General options
 require("config.keymaps")        -- Key mappings
 require("config.autocommands")  -- Autocommands
+require("config.filetypes")  -- Filetypes
 
 -- Notify that config loaded successfully
 vim.notify("Neovim config loaded successfully!", vim.log.levels.INFO)
