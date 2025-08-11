@@ -39,6 +39,9 @@ return {
 
     -- Setup ansiblels with config from lsp_configs/ansible.lua
     lspconfig.ansiblels.setup(require("plugins.lsp_configs.ansible"))
+
+    -- Setup gitlabls with config from lsp_configs/gitlab.lua
+    lspconfig.ansiblels.setup(require("plugins.lsp_configs.gitlab"))
   end,
 }
 
