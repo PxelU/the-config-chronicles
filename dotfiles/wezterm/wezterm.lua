@@ -18,7 +18,7 @@ config.line_height = 1.2                          -- Space between lines
 -- ###########################
 
 -- Pick your favorite color scheme here:
-config.color_scheme = 'Gruvbox Dark (Gogh)'
+config.color_scheme = 'Kanagawa (Gogh)'
 
 -- ###########################
 -- ## 3. TAB BAR SETTINGS  ##

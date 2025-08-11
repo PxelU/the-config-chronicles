@@ -4,10 +4,14 @@ local functions = require("config.functions")
 --  See `:help 'clipboard'`
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
+vim.keymap.set("n", "<space><space>x", "<cmd>source %<CR>", { desc = "Source File" })
+vim.keymap.set("n", "<space>x", ":.lua<CR>", { desc = "Execute current line" })
+vim.keymap.set("v", "<space>x", ":lua<CR>", { desc = "Execute current Highlight" })
+
 -- Diagnostic keymaps
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
--- TIP: Disable arrow keys in normal mod
+-- TIP: Disable arrow keys in normannmod
 vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
 vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
 vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')

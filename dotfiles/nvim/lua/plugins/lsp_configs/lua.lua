@@ -18,7 +18,7 @@ return {
     })
   end,
   settings = {
-    Lua = {},
+    Lua = {}
   },
 }
 
