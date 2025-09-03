@@ -10,15 +10,15 @@ local config = wezterm.config_builder()
 
 -- Change your font and size here:
 config.font = wezterm.font("MesloLGS Nerd Font")  -- Pick any installed font
-config.font_size = 16.0                           -- Adjust for your eyes
-config.line_height = 1.2                          -- Space between lines
+config.font_size = 18.0                           -- Adjust for your eyes
+config.line_height = 1.0                          -- Space between lines
 
 -- ###########################
 -- ## 2. COLOR SCHEME      ##
 -- ###########################
 
 -- Pick your favorite color scheme here:
-config.color_scheme = 'Kanagawa (Gogh)'
+config.color_scheme = 'Moonfly (Gogh)'
 
 -- ###########################
 -- ## 3. TAB BAR SETTINGS  ##

@@ -1,5 +1,16 @@
--- lua/plugins/lsp/bashls.lua
+local util = require 'lspconfig.util'
+
+local cache_dir = vim.uv.os_homedir() .. '/.cache/gitlab-ci-ls/'
 
 return {
-	require 'lspconfig'.gitlabls.setup {}
+  cmd = { 'gitlab-ci-ls' },
+  filetypes = { 'yaml.gitlab' },
+  root_dir = function(bufnr, on_dir)
+    local fname = vim.api.nvim_buf_get_name(bufnr)
+    on_dir(util.root_pattern('.git', '.gitlab*')(fname))
+  end,
+  init_options = {
+    cache_path = cache_dir,
+    log_path = cache_dir .. '/log/gitlab-ci-ls.log',
+  },
 }

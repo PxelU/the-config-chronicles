@@ -1,12 +1,14 @@
-local functions = require("config.functions")
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 --  See `:help 'clipboard'`
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
-vim.keymap.set("n", "<space><space>x", "<cmd>source %<CR>", { desc = "Source File" })
 vim.keymap.set("n", "<space>x", ":.lua<CR>", { desc = "Execute current line" })
 vim.keymap.set("v", "<space>x", ":lua<CR>", { desc = "Execute current Highlight" })
+
+
+vim.keymap.set("n", "<space>ae", ":!ansible-vault encrypt %<CR>", { desc = "[A]nsible [E]ncrypt" })
+vim.keymap.set("n", "<space>ad", ":!ansible-vault decrypt %<CR>", { desc = "[A]nsible [D]ecrypt" })
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
