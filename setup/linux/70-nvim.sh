@@ -8,7 +8,7 @@ log() {
 }
 
 # Specify Neovim version
-NVIM_VERSION="v0.11.1"
+NVIM_VERSION="v0.11.4"
 INSTALL_DIR="$HOME/.local/share/nvim-$NVIM_VERSION"
 BIN_LINK="$HOME/.local/bin/nvim"
 

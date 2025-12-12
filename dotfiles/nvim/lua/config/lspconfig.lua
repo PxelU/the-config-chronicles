@@ -5,7 +5,8 @@ local servers = {
   yamlls     = "yaml",
   dockerls   = "docker",
   ansible    = "ansible",
-  gitlab_ci_ls = "gitlab"
+  gitlab_ci_ls = "gitlab",
+  gopls      = "go"
 }
 
 for server, file in pairs(servers) do

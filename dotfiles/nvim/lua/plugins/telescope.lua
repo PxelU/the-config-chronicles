@@ -18,6 +18,11 @@ return {
     local data = assert(vim.fn.stdpath"data")
     -- Setup telescope with ui-select extension dropdown theme
     telescope.setup({
+      pickers = {
+        find_files = {
+          hidden = ture,
+        },
+      },
       extensions = {
         warp_results = true,
         fzf = {},
@@ -37,7 +42,16 @@ return {
     pcall(telescope.load_extension, "ui-select")
 
     vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "[F]ind [F]iles" })
-    vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "[F]ind by [G]rep" })
+    vim.keymap.set("n", "<leader>fg",
+    function()
+      builtin.live_grep
+      {
+        additional_args = function()
+          return { "--hidden", "--no-ignore"}
+        end
+      }
+    end,
+    { desc = "[F]ind by =G]rep" })
     vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "[F]ind [H]elp" })
     vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "Find existing buffers" })
     vim.keymap.set("n", "<leader>en", function()
