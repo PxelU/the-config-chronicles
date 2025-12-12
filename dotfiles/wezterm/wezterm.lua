@@ -1,134 +1,65 @@
--- wezterm.lua - Simple, Customizable, Documented WezTerm Config
+-- WezTerm Config
+-- Philosophy: Wezterm tabs for process isolation, Nvim for code navigation
+-- Decision: Tab-heavy workflow, minimal splits (splits only for distinct processes)
 
 local wezterm = require 'wezterm'
 local act = wezterm.action
 local config = wezterm.config_builder()
 
 -- ###########################
--- ## 1. FONT CONFIGURATION ##
+-- ## FONT
 -- ###########################
 
--- Change your font and size here:
-config.font = wezterm.font("MesloLGS Nerd Font")  -- Pick any installed font
-config.font_size = 18.0                           -- Adjust for your eyes
-config.line_height = 1.0                          -- Space between lines
+config.font = wezterm.font("MesloLGS Nerd Font")
+config.font_size = 16.0
+config.line_height = 1.15
 
 -- ###########################
--- ## 2. COLOR SCHEME      ##
+-- ## COLOR SCHEME
 -- ###########################
 
--- Pick your favorite color scheme here:
-config.color_scheme = 'Moonfly (Gogh)'
+config.color_scheme = 'Catppuccin Mocha'
 
 -- ###########################
--- ## 3. TAB BAR SETTINGS  ##
+-- ## TAB BAR
 -- ###########################
 
-config.hide_tab_bar_if_only_one_tab = true    -- Hide tab bar if only one tab
-config.use_fancy_tab_bar = false              -- Set to true for default look
-config.tab_max_width = 24                     -- Max width of each tab
+config.hide_tab_bar_if_only_one_tab = true
+config.use_fancy_tab_bar = false
+config.show_new_tab_button_in_tab_bar = false
 
 -- ###########################
--- ## 4. WINDOW DECORATION ##
+-- ## WINDOW DECORATION
 -- ###########################
 
-config.window_decorations = "RESIZE"          -- "NONE", "RESIZE", "TITLE", "INTEGRATED_BUTTONS"
-config.window_padding = { left = 5, right = 5, top = 0, bottom = 0 }  -- Padding around terminal
+config.window_decorations = "RESIZE"
+config.window_padding = { left = 10, right = 10, top = 5, bottom = 5 }
 
 -- ###########################
--- ## 5. INACTIVE PANE STYLE##
+-- ## KEYBINDINGS
 -- ###########################
 
-config.inactive_pane_hsb = {
-  saturation = 0.6,   -- Lower = more gray
-  brightness = 0.7,   -- Lower = dimmer
-}
+local is_mac = string.find(wezterm.target_triple, "apple") ~= nil
+local mod = is_mac and "CMD" or "ALT"
 
--- ###########################
--- ## 6. CUSTOM COLORS      ##
--- ###########################
-
--- Gruvbox palette for easy tab styling tweaks
-local gruvbox = {
-  bg0_h  = "#1d2021",
-  bg1    = "#282828",
-  bg2    = "#32302f",
-  fg1    = "#ebdbb2",
-  yellow = "#fabd2f",
-  orange = "#fe8019",
-  gray   = "#a89984",
-}
-
-config.window_frame = {
-  active_titlebar_bg = gruvbox.bg0_h,
-  inactive_titlebar_bg = gruvbox.bg1,
-}
-
-config.colors = {
-  tab_bar = {
-    background = gruvbox.bg1,
-    active_tab = {
-      bg_color = gruvbox.bg0_h,
-      fg_color = gruvbox.yellow,
-      intensity = "Bold",
-      underline = "None",
-      italic = false,
-      strikethrough = false,
-    },
-    inactive_tab = {
-      bg_color = gruvbox.bg1,
-      fg_color = gruvbox.gray,
-    },
-    inactive_tab_hover = {
-      bg_color = gruvbox.bg2,
-      fg_color = gruvbox.orange,
-      italic = true,
-    },
-    new_tab = {
-      bg_color = gruvbox.bg1,
-      fg_color = gruvbox.yellow,
-    },
-    new_tab_hover = {
-      bg_color = gruvbox.bg2,
-      fg_color = gruvbox.orange,
-      italic = true,
-    },
-  },
-}
-
--- ###########################
--- ## 7. KEYBINDINGS       ##
--- ###########################
-
--- Change or add keybindings below.
 config.keys = {
-  -- Vim-style pane navigation with ALT+h/j/k/l
-  {key="h", mods="ALT", action=act.ActivatePaneDirection("Left")},
-  {key="j", mods="ALT", action=act.ActivatePaneDirection("Down")},
-  {key="k", mods="ALT", action=act.ActivatePaneDirection("Up")},
-  {key="l", mods="ALT", action=act.ActivatePaneDirection("Right")},
+  {key="d", mods=mod, action=act.SplitHorizontal{domain="CurrentPaneDomain"}},
+  {key="h", mods=mod, action=act.ActivatePaneDirection("Left")},
+  {key="l", mods=mod, action=act.ActivatePaneDirection("Right")},
 
-  -- Vim-style pane creation
-  {key="d", mods="ALT", action=act.SplitHorizontal{domain="CurrentPaneDomain"}},
-  {key="s", mods="ALT", action=act.SplitVertical{domain="CurrentPaneDomain"}},
-  {key="q", mods="ALT", action=act.CloseCurrentPane{confirm=true}},
-  {key="z", mods="ALT", action=act.TogglePaneZoomState},
-
-  -- Chrome-style tab management
   {key="t", mods="CTRL|SHIFT", action=act.SpawnTab("CurrentPaneDomain")},
   {key="w", mods="CTRL|SHIFT", action=act.CloseCurrentTab{confirm=true}},
   {key="Tab", mods="CTRL|SHIFT", action=act.ActivateTabRelative(1)},
-  {key="Tab", mods="CTRL|SHIFT|SHIFT", action=act.ActivateTabRelative(-1)},
 }
 
 -- ###########################
--- ## 8. EXPORT Misc        ##
+-- ## MISC
 -- ###########################
 
 config.audible_bell = "Disabled"
 
 -- ###########################
--- ## 9. EXPORT CONFIG      ##
+-- ## EXPORT
 -- ###########################
 
 return config
