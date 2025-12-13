@@ -11,8 +11,8 @@ local config = wezterm.config_builder()
 -- ###########################
 
 config.font = wezterm.font("MesloLGS Nerd Font")
-config.font_size = 16.0
-config.line_height = 1.15
+config.font_size = 18.0
+config.line_height = 1
 
 -- ###########################
 -- ## COLOR SCHEME
