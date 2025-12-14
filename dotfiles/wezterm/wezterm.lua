@@ -14,7 +14,7 @@ local mod = is_mac and "CMD" or "ALT"
 -- ###########################
 
 config.font = wezterm.font("MesloLGS Nerd Font")
-config.font_size = is_mac and 18.0 or 15.0
+config.font_size = is_mac and 18.0 or 14.0
 config.line_height = 1
 
 -- ###########################
