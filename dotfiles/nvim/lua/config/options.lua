@@ -1,16 +1,40 @@
-vim.o.number = true
-vim.o.showmode = false
-vim.o.relativenumber = true
-vim.o.colorcolumn = "80"
-vim.o.breakindent = true
-vim.o.undofile = true
-vim.o.ignorecase = true
-vim.o.smartcase = true
-vim.o.updatetime = 250
-vim.o.scrolloff = 8
-vim.o.cursorline = true
-vim.g.have_nerd_font = true
-vim.o.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
-vim.o.clipboard = "unnamedplus"
-vim.o.timeoutlen = 300
+local opt = vim.opt
+
+-- ==========================================================================
+-- 1. INDENTATION
+-- ==========================================================================
+opt.expandtab = true
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.softtabstop = 2
+opt.smartindent = true
+opt.breakindent = true
+
+-- ==========================================================================
+-- 2. UI & VISUALS
+-- ==========================================================================
+opt.number = true
+opt.relativenumber = true
+opt.cursorline = true
+opt.signcolumn = "yes"
+opt.showmode = false
+opt.termguicolors = true
+
+opt.colorcolumn = "100" 
+
+opt.list = true
+opt.listchars = {
+  tab = "» ",
+  trail = "·",
+}
+
+-- ==========================================================================
+-- 3. BEHAVIOR
+-- ==========================================================================
+opt.ignorecase = true
+opt.smartcase = true
+opt.updatetime = 250
+opt.timeoutlen = 1000
+opt.scrolloff = 8
+opt.undofile = true
+opt.clipboard = "unnamedplus"
