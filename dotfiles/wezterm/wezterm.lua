@@ -5,13 +5,16 @@
 local wezterm = require 'wezterm'
 local act = wezterm.action
 local config = wezterm.config_builder()
+local is_mac = string.find(wezterm.target_triple, "apple") ~= nil
+local mod = is_mac and "CMD" or "ALT"
+
 
 -- ###########################
 -- ## FONT
 -- ###########################
 
 config.font = wezterm.font("MesloLGS Nerd Font")
-config.font_size = 18.0
+config.font_size = is_mac and 18.0 or 15.0
 config.line_height = 1
 
 -- ###########################
@@ -38,9 +41,6 @@ config.window_padding = { left = 10, right = 10, top = 5, bottom = 5 }
 -- ###########################
 -- ## KEYBINDINGS
 -- ###########################
-
-local is_mac = string.find(wezterm.target_triple, "apple") ~= nil
-local mod = is_mac and "CMD" or "ALT"
 
 config.keys = {
   {key="d", mods=mod, action=act.SplitHorizontal{domain="CurrentPaneDomain"}},
