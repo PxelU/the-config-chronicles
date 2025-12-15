@@ -28,12 +28,6 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      vim.api.nvim_create_autocmd("BufRead", {
-        pattern = "*.sh.j2",
-        callback = function()
-          vim.diagnostic.enable(false, { bufnr = 0 })
-        end,
-      })
 
       vim.lsp.config('lua_ls', {
         settings = {
