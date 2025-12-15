@@ -6,7 +6,6 @@ return {
     "williamboman/mason.nvim",
     opts = {},
   },
-
   {
     "williamboman/mason-lspconfig.nvim",
     opts = {
@@ -15,7 +14,6 @@ return {
         "bashls",
         "dockerls",
         "gopls",
-        "jinja_lsp",
         "lua_ls",
         "pyright",
         "terraformls",
@@ -30,6 +28,12 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
+      vim.api.nvim_create_autocmd("BufRead", {
+        pattern = "*.sh.j2",
+        callback = function()
+          vim.diagnostic.enable(false, { bufnr = 0 })
+        end,
+      })
 
       vim.lsp.config('lua_ls', {
         settings = {
@@ -96,11 +100,4 @@ return {
       })
     end,
   },
-  {
-  vim.filetype.add({
-  pattern = {
-    ['.*%.sh%.j2$'] = 'jinja.sh'
-  },
-}),
-}
 }
