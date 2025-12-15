@@ -15,6 +15,7 @@ return {
         "bashls",
         "dockerls",
         "gopls",
+        "jinja_lsp",
         "lua_ls",
         "pyright",
         "terraformls",
@@ -86,9 +87,7 @@ return {
                 "service*.yaml",
                 "ingress*.yaml",
                 "configmap*.yaml",
-                "secret*.yaml",
                 "namespace*.yaml",
-                "certificate*.yaml",
                 "ingressroute*.yaml",
               },
             },
@@ -97,4 +96,11 @@ return {
       })
     end,
   },
+  {
+  vim.filetype.add({
+  pattern = {
+    ['.*%.sh%.j2$'] = 'jinja.sh'
+  },
+}),
+}
 }
