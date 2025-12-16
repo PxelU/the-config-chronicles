@@ -3,27 +3,18 @@
 
 return { 
   {
-  "catppuccin/nvim",
-  name = "catppuccin",
+  "ellisonleao/gruvbox.nvim",
+  name = "gruvebox",
   lazy = false,
   priority = 1000,
-  opts = {
-    integration = {
-      gitsings = true,
-      which_key = false
-    }
-  },
+  opts = {},
   config = function()
-    vim.cmd.colorscheme("catppuccin-mocha")
+    vim.cmd.colorscheme("gruvbox")
   end
   },
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-    opts = {
-      options = {
-        theme = "catppuccin"
-      }
-    }
+    opts = {}
   },
 }
