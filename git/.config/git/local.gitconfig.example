@@ -1,0 +1,44 @@
+# Machine-Specific Git Configuration Template
+#
+# This file is a template - DO NOT edit this directly.
+# Copy it to create your local config:
+#
+#   cp ~/.config/git/local.gitconfig.example ~/.config/git/local.gitconfig
+#   nvim ~/.config/git/local.gitconfig
+#
+# This file overrides/extends settings from ~/.gitconfig
+
+[user]
+	# Your actual name and email for commits
+	name = Your Full Name
+	email = your.email@example.com
+	
+	# Optional: SSH signing key for "Verified" badges on GitHub
+	# Uncomment and set to your SSH public key path:
+	# signingkey = ~/.ssh/id_ed25519.pub
+
+# Optional: Enable commit signing with SSH
+# Uncomment these sections if you want signed commits
+#
+# [commit]
+# 	gpgsign = true
+#
+# [gpg]
+# 	format = ssh
+#
+# [gpg "ssh"]
+# 	allowedSignersFile = ~/.config/git/allowed_signers
+
+# Machine-specific overrides examples:
+#
+# Different email for work machine:
+# [user]
+# 	email = work.email@company.com
+#
+# Windows machine with different line ending handling:
+# [core]
+# 	autocrlf = false
+#
+# Restrict pushes to work repos only:
+# [url "https://github.com/work-org/"]
+# 	insteadOf = git@github.com:work-org/

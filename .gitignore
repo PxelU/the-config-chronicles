@@ -1,4 +1,3 @@
-# === Sensitive directories and files ===
 .ssh/
 .gnupg/
 .aws/
@@ -15,7 +14,6 @@
 *.secrets
 *.pfx
 
-# === Editor and system junk ===
 *.swp
 *.swo
 *~
@@ -25,22 +23,22 @@ lazy-lock.json
 .DS_Store
 Thumbs.db
 
-# === Cache and local state ===
 .cache/
 .local/
 node_modules/
 npm-debug.log
 yarn-error.log
 
-# === IDE/project files ===
 .idea/
 .vscode/
 
-# === Stow-specific ignores ===
+shell/.zshrc.local
+
+git/.config/git/local.gitconfig
+git/.config/git/allwed_singers
+
 .stow-local-ignore
 stow-local-ignore
 
-# === Misc ===
 *.old
 *.backup
-

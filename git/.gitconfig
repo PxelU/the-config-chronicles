@@ -1,0 +1,45 @@
+[user]
+	name = YOUR_NAME_HERE
+	email = YOUR_EMAIL_HERE
+
+[init]
+	defaultBranch = main
+
+[core]
+	editor = nvim
+
+	whitespace = trailing-space,space-before-tab
+
+	preloadIndex = true
+
+	autocrlf = input
+
+[pull]
+	rebase = false
+
+[push]
+	default = simple
+
+[fetch]
+	prune = true
+
+[merge]
+	conflictStyle = zdiff3
+	renameLimit = 999999
+
+[diff]
+	renames = copies
+	algorithm = histogram
+	colorMoved = default
+
+[commit]
+	verbose = true
+
+[log]
+	date = iso
+
+[color]
+	ui = auto
+
+[include]
+	path = ~/.config/git/local.gitconfig
