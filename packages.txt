@@ -1,0 +1,23 @@
+# core
+neovim
+kitty
+stow
+fzf
+ripgrep
+fd-find
+zoxide
+bat
+git
+
+# management
+podman
+kubectl
+k9s
+just
+
+# arch
+hyprland
+waybar
+mako
+rofi
+wl-clipboard
