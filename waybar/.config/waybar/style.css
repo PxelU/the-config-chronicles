@@ -6,50 +6,35 @@
 }
 
 window#waybar {
-    background-color: rgba(30, 30, 46, 0.8);
-    color: #cdd6f4;
-    transition-property: background-color;
-    transition-duration: .5s;
+    background-color: rgba(50, 48, 47, 0.85); /* Gruvbox Dark Soft */
+    color: #ebdbb2; /* Foreground */
+    border-bottom: 2px solid #504945;
 }
 
 #workspaces button {
     padding: 0 5px;
-    color: #cdd6f4;
+    color: #928374; /* Gray */
 }
 
 #workspaces button.active {
-    color: #89b4fa;
-    border-bottom: 2px solid #89b4fa;
+    color: #fabd2f; /* Yellow */
+    border-bottom: 2px solid #fabd2f;
 }
 
-#clock, #battery, #cpu, #memory, #network, #pulseaudio, #tray {
+#workspaces button.urgent {
+    color: #fb4934; /* Red */
+}
+
+#clock, #battery, #cpu, #memory, #network, #pulseaudio, #tray, #language, #bluetooth {
     padding: 0 10px;
     margin: 0 4px;
 }
 
-#clock { color: #fab387; }
-#cpu { color: #f38ba8; }
-#memory { color: #cba6f7; }
-#network { color: #89dceb; }
-
-#network.ethernet {
-    color: #89dceb;
-}
-
-#network.wifi {
-    color: #f9e2af;
-}
-
-#bluetooth {
-    color: #89b4fa;
-}
-
-#network, #bluetooth {
-    padding: 0 10px;
-}
-
-#language {
-    color: #f5e0dc;
-    padding: 0 10px;
-    margin: 0 4px;
-}
+#clock { color: #fe8019; }        /* Orange */
+#cpu { color: #fb4934; }          /* Red */
+#memory { color: #d3869b; }       /* Purple */
+#network.ethernet { color: #8ec07c; } /* Aqua */
+#network.wifi { color: #8ec07c; }     /* Aqua */
+#bluetooth { color: #83a598; }     /* Blue */
+#pulseaudio { color: #b8bb26; }    /* Green */
+#language { color: #d65d0e; }      /* Dark Orange */

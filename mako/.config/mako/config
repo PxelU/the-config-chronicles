@@ -1,15 +1,15 @@
 max-history=100
 sort=-time
 
-# Visuals
-font=JetBrainsMono Nerd Font 10
-background-color=#1e1e2eaa
-text-color=#cdd6f4
-border-color=#89b4fa
+font=JetBrainsMono Nerd Font 12
+background-color=#32302f
+text-color=#ebdbb2
+border-color=#fabd2f
 border-size=2
 border-radius=10
 padding=15
-
-# Behavior
 default-timeout=5000
-group-by=app-name
+
+[urgency=high]
+border-color=#fb4934
+default-timeout=0
