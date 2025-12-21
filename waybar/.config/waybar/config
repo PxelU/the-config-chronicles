@@ -1,0 +1,74 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 40,
+    "spacing": 4,
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio", "bluetooth", "network#ethernet", "network#wifi", "hyprland/language", "cpu", "memory", "tray"],
+
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{name}"
+    },
+
+    "tray": {
+        "spacing": 10
+    },
+
+    "clock": {
+        "format": "󰥔 {:%H:%M | %d.%m.%Y}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    "cpu": {
+        "format": " {usage}%",
+        "tooltip": false
+    },
+
+    "memory": {
+        "format": " {}%"
+    },
+
+    "network#ethernet": {
+        "interface": "enp*", // Matches most ethernet names
+        "format-ethernet": "󰈀 {ifname}",
+        "format-disconnected": "", // Hide when not plugged in
+        "tooltip-format": "󰈀 {ifname} via {gwaddr}",
+        "on-click": "nm-connection-editor"
+    },
+
+    "network#wifi": {
+        "interface": "wlp*", // Matches most wifi names
+        "format-wifi": " {essid} ({signalStrength}%)",
+        "format-disconnected": "󰖪",
+        "tooltip-format": "󰖪 Disconnected",
+        "on-click": "nm-connection-editor"
+    },
+
+    "bluetooth": {
+        "format": " {status}",
+        "format-disabled": "", // hide when off
+        "format-connected": " {device_alias}",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "on-click": "blueman-manager"
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟 Muted",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "hyprland/language": {
+    "format": "󰌌 {}",
+    "format-en": "US",
+    "format-de": "DE",
+    "on-click": "hyprctl switchxkblayout all next"
+  }
+}

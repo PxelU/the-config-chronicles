@@ -1,0 +1,33 @@
+configuration {
+    modi: "drun";
+    show-icons: true;
+    icon-theme: "Adwaita";
+    display-drun: " open ";
+    drun-display-format: "{name}";
+    terminal: "kitty";
+
+    highlight: bold;
+
+    disable-history: false;
+    sort: true;
+    sorting-method: "fzf";
+}
+
+@theme "/usr/share/rofi/themes/gruvbox-dark-soft.rasi"
+
+window {
+  width: 30%;
+}
+
+element-text {
+    highlight: bold; 
+}
+
+listview {
+    scrollbar: false;
+    lines: 5;
+}
+
+element-icon {
+    size: 30px;
+}
