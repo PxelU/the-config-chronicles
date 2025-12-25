@@ -11,6 +11,11 @@ source $ZSH/oh-my-zsh.sh
 
 export EDITOR=nvim
 
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_CACHE_HOME="$HOME/.cache"
+
 export PATH="$HOME/bin:$HOME/.local/bin:/opt/nvim-linux-x86_64/bin:$PATH"
 
 if [[ -f ~/.fzf.zsh ]]; then
