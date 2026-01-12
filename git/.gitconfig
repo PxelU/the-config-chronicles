@@ -11,7 +11,7 @@
 	autocrlf = input
 
 [pull]
-	rebase = false
+	ff = only
 
 [push]
 	default = simple
