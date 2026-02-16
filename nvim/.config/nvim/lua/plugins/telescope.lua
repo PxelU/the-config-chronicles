@@ -47,7 +47,10 @@ return {
       builtin.live_grep
       {
         additional_args = function()
-          return { "--hidden", "--no-ignore"}
+          return {
+            "--hidden",
+            "--glob", "!.git"
+          }
         end
       }
     end,
