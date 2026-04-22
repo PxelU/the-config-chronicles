@@ -42,3 +42,4 @@ stow-local-ignore
 
 *.old
 *.backup
+*lock.json
