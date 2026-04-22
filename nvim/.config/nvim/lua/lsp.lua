@@ -1,14 +1,8 @@
-require("mason").setup{}
-require("conform").setup({
-  formatters_by_ft = {
-    python = { "isort", "black" },
-    yaml = { "prettier" },
-  },
-})
+require("mason").setup({})
 
 vim.filetype.add({
   extension = {
-    gotmpl = 'gotmpl',
+    gotmpl = "gotmpl",
   },
   pattern = {
     [".*/templates/.*%.tpl"] = "helm",
@@ -16,8 +10,7 @@ vim.filetype.add({
     ["helmfile.*%.ya?ml"] = "helm",
   },
 })
-
-vim.treesitter.language.register('gotmpl', 'helm')
+vim.treesitter.language.register("gotmpl", "helm")
 
 vim.lsp.config("helm_ls", {
   cmd = { "helm_ls", "serve" },
@@ -39,17 +32,15 @@ vim.lsp.config("helm_ls", {
   },
 })
 
-
-
-vim.lsp.config('lua_ls', {
+vim.lsp.config("lua_ls", {
   settings = {
     Lua = {
-      diagnostics = { globals = { 'vim' } },
+      diagnostics = { globals = { "vim" } },
       workspace = { checkThirdParty = false },
     },
   },
 })
-vim.lsp.config('yamlls', {
+vim.lsp.config("yamlls", {
   settings = {
     yaml = {
       schemas = {
@@ -105,15 +96,15 @@ vim.lsp.config('yamlls', {
 })
 
 vim.lsp.enable({
-  'ansiblels',
-  'bashls',
-  'dockerls',
-  'gopls',
-  'lua_ls',
-  'pyright',
-  'terraformls',
-  'yamlls',
-  'gitlab_ci_ls',
-  'jinja_lsp',
-  'helm_ls'
+  "ansiblels",
+  "bashls",
+  "dockerls",
+  "gopls",
+  "lua_ls",
+  "pyright",
+  "terraformls",
+  "yamlls",
+  "gitlab_ci_ls",
+  "jinja_lsp",
+  "helm_ls",
 })
