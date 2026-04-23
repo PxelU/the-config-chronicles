@@ -1,42 +1,34 @@
-#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-#fi
-#
-#export ZSH="$HOME/.oh-my-zsh"
-# ZSH_THEME="powerlevel10k/powerlevel10k"
-# plugins=(git aliases docker zsh-syntax-highlighting zsh-vi-mode)
-#source $ZSH/oh-my-zsh.sh
-#
-#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)" && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-source "${ZINIT_HOME}/zinit.zsh"
-
-zinit snippet OMZP::git
-
-zinit light zsh-users/zsh-syntax-highlighting
-
-zinit light jeffreytse/zsh-vi-mode
-
-export EDITOR=nvim
-
+export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
-export XDG_CACHE_HOME="$HOME/.cache"
 
 export PATH="$HOME/bin:$HOME/.local/bin:/opt/nvim-linux-x86_64/bin:$PATH"
+export EDITOR=nvim
 
-if command -v zoxide >/dev/null 2>&1; then
-  export _ZO_RESOLVE_SYMLINKS=1
-  eval "$(zoxide init zsh)"
-fi
+ZINIT_HOME="${XDG_DATA_HOME}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
+
+zinit snippet OMZP::git
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light jeffreytse/zsh-vi-mode
 
 zstyle -d ':completion:*:*:*:*:*' menu
 zstyle ':completion:*' menu no
 
-eval "$(starship init zsh)"
+zinit ice as"command" from"gh-r" \
+          atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
+          atpull"%atclone" src"init.zsh"
+zinit light starship/starship
+
+zinit ice as"command" from"gh-r" \
+    atclone"./zoxide init zsh > init.zsh" \
+    atpull"%atclone" src"init.zsh"
+zinit light ajeetdsouza/zoxide
+
+alias zz='__zoxide_zi'
 
 [[ -f ~/.config/zsh/search.zsh ]] && source ~/.config/zsh/search.zsh
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
