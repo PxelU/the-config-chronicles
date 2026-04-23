@@ -10,7 +10,6 @@ vim.filetype.add({
     ["helmfile.*%.ya?ml"] = "helm",
   },
 })
-vim.treesitter.language.register("gotmpl", "helm")
 
 vim.lsp.config("helm_ls", {
   cmd = { "helm_ls", "serve" },
@@ -44,52 +43,46 @@ vim.lsp.config("yamlls", {
   settings = {
     yaml = {
       schemas = {
+        kubernetes = { "**/tests/*.test.yaml" },
+        ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = {
+          ".gitlab-ci.yml",
+          ".gitlab-ci.yaml",
+        },
         -- Ansible
-        ["https://raw.githubusercontent.com/ansible/schemas/main/f/ansible-tasks.json"] = {
-          "**/tasks/*.yml",
-          "**/tasks/*.yaml",
-          "**/handlers/*.yml",
-          "**/handlers/*.yaml",
-        },
-        ["https://raw.githubusercontent.com/ansible/schemas/main/f/ansible-vars.json"] = {
-          "**/vars/*.yml",
-          "**/vars/*.yaml",
-          "**/defaults/*.yml",
-          "**/defaults/*.yaml",
-        },
-        ["https://raw.githubusercontent.com/ansible/schemas/main/f/ansible-meta.json"] = {
-          "**/meta/*.yml",
-          "**/meta/*.yaml",
-        },
-        ["https://raw.githubusercontent.com/ansible/schemas/main/f/ansible-playbook.json"] = {
-          "*playbook*.yml",
-          "*playbook*.yaml",
-        },
+        -- ["https://raw.githubusercontent.com/ansible/schemas/main/f/ansible-tasks.json"] = {
+        --   "**/tasks/*.yml",
+        --   "**/tasks/*.yaml",
+        --   "**/handlers/*.yml",
+        --   "**/handlers/*.yaml",
+        -- },
+        -- ["https://raw.githubusercontent.com/ansible/schemas/main/f/ansible-vars.json"] = {
+        --   "**/vars/*.yml",
+        --   "**/vars/*.yaml",
+        --   "**/defaults/*.yml",
+        --   "**/defaults/*.yaml",
+        -- },
+        -- ["https://raw.githubusercontent.com/ansible/schemas/main/f/ansible-meta.json"] = {
+        --   "**/meta/*.yml",
+        --   "**/meta/*.yaml",
+        -- },
+        -- ["https://raw.githubusercontent.com/ansible/schemas/main/f/ansible-playbook.json"] = {
+        --   "*playbook*.yml",
+        --   "*playbook*.yaml",
+        -- },
 
-        -- CI/CD
-        ["https://json.schemastore.org/gitlab-ci.json"] = ".gitlab-ci.yml",
-        ["https://json.schemastore.org/github-workflow.json"] = ".github/workflows/*",
+        -- -- CI/CD
+        -- ["https://json.schemastore.org/gitlab-ci.json"] = ".gitlab-ci.yml",
+        -- ["https://json.schemastore.org/github-workflow.json"] = ".github/workflows/*",
 
-        -- Docker Compose
-        ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = {
-          "docker-compose*.yml",
-          "docker-compose*.yaml",
-          "compose.yml",
-          "compose.yaml",
-        },
+        -- -- Docker Compose
+        -- ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = {
+        --   "docker-compose*.yml",
+        --   "docker-compose*.yaml",
+        --   "compose.yml",
+        --   "compose.yaml",
+        -- },
 
         -- Kubernetes (FluxCD, manifests, CRDs) - put LAST so specific ones win
-        kubernetes = {
-          "**/k8s/**/*.yaml",
-          "**/kubernetes/**/*.yaml",
-          "**/manifests/**/*.yaml",
-          "deployment*.yaml",
-          "service*.yaml",
-          "ingress*.yaml",
-          "configmap*.yaml",
-          "namespace*.yaml",
-          "ingressroute*.yaml",
-        },
       },
     },
   },

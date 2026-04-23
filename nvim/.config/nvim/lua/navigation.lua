@@ -20,9 +20,11 @@ telescope.setup({
     },
   },
 })
+
 telescope.load_extension("fzf")
 telescope.load_extension("smart_history")
 telescope.load_extension("ui-select")
+
 vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "[F]ind [F]iles" })
 vim.keymap.set("n", "<leader>fg", function()
   builtin.live_grep({
