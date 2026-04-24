@@ -1,8 +1,13 @@
 require("conform").setup({
   formatters_by_ft = {
-    python = { "isort", "black" },
-    yaml = { "prettier" },
+    bash = { "shfmt" },
+    go = { "gofmt" },
+    json = { "prettier" },
     lua = { "stylua" },
+    markdown = { "prettier" },
+    python = { "isort", "black" },
+    sh = { "shfmt" },
+    yaml = { "prettier" },
   },
   format_on_save = function(bufnr)
     local ok_fts = { lua = true }
@@ -21,9 +26,8 @@ require("lint").linters_by_ft = {
   dockerfile = { "hadolint" },
   sh         = { "shellcheck" },
   bash       = { "shellcheck" },
-  terraform  = {},
-  python     = {},
-  markdown   = {},
+  python     = { "flake8" },
+  ansible    = { "ansible-lint" },
 }
 
 
