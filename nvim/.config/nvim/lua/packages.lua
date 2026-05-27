@@ -20,4 +20,8 @@ vim.pack.add({
   -- Lint & Format
   { src = "https://github.com/mfussenegger/nvim-lint" },
   { src = "https://github.com/stevearc/conform.nvim" },
+  -- Misc
+  { src = "https://github.com/subnut/nvim-ghost.nvim" },
+  { src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
+  { src = "https://github.com/sindrets/diffview.nvim" },
 })
