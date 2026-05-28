@@ -9,8 +9,12 @@ export PATH="$HOME/bin:$HOME/.local/bin:/opt/nvim-linux-x86_64/bin:$PATH"
 export EDITOR=nvim
 
 export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
+if [[ -d "$PYENV_ROOT/bin" ]]; then
+    export PATH="$PYENV_ROOT/bin:$PATH"
+fi
+if command -v pyenv >/dev/null 2>&1; then
+    eval "$(pyenv init - zsh)"
+fi
 
 ZINIT_HOME="${XDG_DATA_HOME}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
