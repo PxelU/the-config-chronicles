@@ -43,6 +43,15 @@ end)
 map("n", "<leader>pu", function()
   vim.pack.update()
 end, { desc = "Pack: Update" })
+map("i", "<C-t>", function()
+  local branch = vim.fn.system("git rev-parse --abbrev-ref HEAD 2>/dev/null"):gsub("\n", "")
+  local ticket = branch:match("([A-Z]+%-%d+)")
+  if ticket then
+    return "refs: " .. ticket
+  else
+    return "refs: (no ticket found)"
+  end
+end, { expr = true, buffer = false, desc = "Insert git ticket ref" })
 
 require("packages")
 require("ui")
