@@ -37,7 +37,6 @@ setopt EXTENDED_HISTORY
 zinit snippet OMZL::git.zsh
 zinit snippet OMZP::git
 zinit light zsh-users/zsh-syntax-highlighting
-zinit light jeffreytse/zsh-vi-mode
 
 zstyle -d ':completion:*:*:*:*:*' menu
 zstyle ':completion:*' menu no
